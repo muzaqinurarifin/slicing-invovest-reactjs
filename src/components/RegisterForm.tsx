@@ -111,7 +111,7 @@ export const RegisterForm: React.FC = () => {
         <Button
           type="submit"
           label={
-            (isLoading ? (
+            isLoading ? (
               <span className="flex items-center justify-center gap-2">
                 <svg
                   className="animate-spin h-5 w-5 text-white"
@@ -137,7 +137,7 @@ export const RegisterForm: React.FC = () => {
               </span>
             ) : (
               "Daftar Sekarang"
-            )) as any
+            )
           }
           variant="primary"
           isLoading={isLoading}
