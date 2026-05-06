@@ -1,30 +1,21 @@
 import React from "react";
 
-interface BaseInputProps {
+interface TextareaProps {
   label: string;
   name: string;
   register: any;
   error?: string;
-  type?: string;
   placeholder?: string;
 }
 
-export const Input: React.FC<BaseInputProps> = ({
-  label,
-  name,
-  register,
-  error,
-  type = "text",
-  placeholder,
-}) => {
+export const Textarea: React.FC<TextareaProps> = ({ label, name, register, error, placeholder }) => {
   return (
     <div className="flex flex-col gap-1 w-full">
       <label className="font-medium text-gray-700 text-sm">{label}</label>
-      <input
-        type={type}
-        placeholder={placeholder}
+      <textarea
         {...register(name)}
-        className={`border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-primary transition-all ${
+        placeholder={placeholder}
+        className={`border rounded-lg px-3 py-2 min-h-25 focus:outline-none focus:ring-2 focus:ring-brand-primary resize-y transition-all ${
           error ? "border-red-500 bg-red-50" : "border-gray-300"
         }`}
       />

@@ -1,29 +1,40 @@
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  label: React.ReactNode;
+import type { FC, ReactNode } from "react";
+
+interface ButtonProps {
+  label: string | ReactNode;
   variant?: "primary" | "outline";
   className?: string;
+  onClick?: () => void;
+  type?: "button" | "submit" | "reset";
+  disabled?: boolean;
   isLoading?: boolean;
 }
 
-export const Button: React.FC<ButtonProps> = ({
+export const Button: FC<ButtonProps> = ({
   label,
   variant = "primary",
   className,
-  isLoading,
+  onClick,
+  type = "button",
   disabled,
-  ...props
+  isLoading,
 }) => {
   const baseStyle =
     "px-10 py-3 rounded font-medium transition-all duration-200";
   const variantStyle =
     variant === "primary"
-      ? "bg-red-900 text-white hover:bg-red-800 disabled:opacity-70 disabled:cursor-not-allowed"
-      : "border border-red-900 text-red-900 hover:bg-red-100 disabled:opacity-70 disabled:cursor-not-allowed";
+      ? "bg-[#852e4e] text-white hover:bg-[#6b253d]"
+      : "border border-[#852e4e] text-[#852e4e] hover:bg-[#fde8f0]";
+
+  const disabledStyle =
+    disabled || isLoading ? "opacity-70 cursor-not-allowed" : "";
+
   return (
     <button
-      className={`${baseStyle} ${variantStyle} ${className}`}
+      type={type}
+      onClick={onClick}
       disabled={disabled || isLoading}
-      {...props}
+      className={`${baseStyle} ${variantStyle} ${disabledStyle} ${className || ""}`}
     >
       {label}
     </button>
