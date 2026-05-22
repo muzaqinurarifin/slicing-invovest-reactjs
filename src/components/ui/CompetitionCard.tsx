@@ -1,7 +1,6 @@
 import React from "react";
 import Button from "./Button";
 
-// 1. Kita buat antarmuka (interface) untuk mendefinisikan data apa saja yang diterima kartu ini
 interface CompetitionCardProps {
   title: string;
   description: string;
@@ -9,10 +8,9 @@ interface CompetitionCardProps {
   category?: string;
   date?: string;
   location?: string;
-  buttonText?: string; // Tanda tanya (?) berarti ini opsional
+  buttonText?: string;
 }
 
-// 2. Kita buat komponennya dengan React.FC dan menerima props
 export const CompetitionCard: React.FC<CompetitionCardProps> = ({
   title,
   description,
@@ -20,14 +18,13 @@ export const CompetitionCard: React.FC<CompetitionCardProps> = ({
   category,
   date,
   location,
-  buttonText = "INFO SELENGKAPNYA", // Nilai bawaan jika tidak diisi
+  buttonText = "INFO SELENGKAPNYA",
 }) => {
   const placeholderImage =
     "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?auto=format&fit=crop&w=800&q=80";
 
   return (
     <div className="max-w-[320px] bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden font-sans flex flex-col group transition-all duration-300 hover:shadow-md">
-      {/* Bagian Gambar */}
       <div className="relative overflow-hidden">
         <img
           src={imageUrl ?? placeholderImage}
@@ -36,7 +33,6 @@ export const CompetitionCard: React.FC<CompetitionCardProps> = ({
         />
       </div>
 
-      {/* Bagian Konten Teks */}
       <div className="p-4 flex flex-col grow">
         {category ? (
           <span className="text-[10px] uppercase tracking-[0.25em] text-red-900 font-semibold mb-2">

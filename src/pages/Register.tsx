@@ -5,7 +5,6 @@ import { Input } from "../components/ui/Input";
 import Button from "../components/ui/Button";
 import { Link } from "react-router-dom";
 
-// validasi
 const schema = z.object({
   nama: z.string().min(1, "Nama harus diisi"),
   email: z.string().min(8, "Email minimal 8 angka"),

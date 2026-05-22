@@ -1,9 +1,8 @@
-// components/atoms/Card.tsx
 import type { ReactNode } from "react";
 
 interface CardProps {
-  children: ReactNode; // ReactNode memungkinkan isi berupa teks, HTML, atau komponen lain
-  className?: string; // Untuk kustomisasi tambahan lewat Tailwind
+  children: ReactNode;
+  className?: string;
 }
 
 export const Card = ({ children, className = "" }: CardProps) => {

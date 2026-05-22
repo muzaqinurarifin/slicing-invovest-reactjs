@@ -1,12 +1,12 @@
-import { Link, Navigate, Outlet, useNavigate } from "react-router-dom";
-import { isAdminAuthenticated, logoutAdmin } from "../utils/auth";
+// File: src/layouts/AdminLayout.tsx
+import { Link, Outlet, useNavigate } from "react-router-dom";
+// Import Zustand store untuk mengambil fungsi logout
+import { useAuthStore } from "../store/useAuthStore";
 
 export default function AdminLayout() {
   const navigate = useNavigate();
-
-  if (!isAdminAuthenticated()) {
-    return <Navigate to="/login" replace />;
-  }
+  // Mengambil fungsi logout dari Zustand
+  const logout = useAuthStore((state) => state.logout);
 
   return (
     <div className="min-h-screen flex bg-[#fff1f5] text-slate-900">
@@ -16,7 +16,9 @@ export default function AdminLayout() {
             Admin Panel
           </p>
           <h1 className="mt-4 text-2xl font-bold">Invofest</h1>
-          <p className="mt-2 text-sm text-red-300">Dashboard kontrol acara</p>
+          <p className="mt-2 text-sm text-red-300">
+            Dashboard pengelolaan backend
+          </p>
         </div>
 
         <nav className="flex-1 flex flex-col gap-3 text-sm">
@@ -27,28 +29,22 @@ export default function AdminLayout() {
             Dashboard
           </Link>
           <Link
-            to="/admin/competitions"
+            to="/admin/events"
             className="rounded-2xl bg-red-800/90 px-4 py-3 transition hover:bg-red-700"
           >
-            Manage Kompetisi
+            Manage Events
           </Link>
           <Link
-            to="/admin/seminars"
+            to="/admin/categories"
             className="rounded-2xl bg-red-800/90 px-4 py-3 transition hover:bg-red-700"
           >
-            Manage Seminar
+            Manage Categories
           </Link>
           <Link
-            to="/admin/workshops"
+            to="/admin/speakers"
             className="rounded-2xl bg-red-800/90 px-4 py-3 transition hover:bg-red-700"
           >
-            Manage Workshop
-          </Link>
-          <Link
-            to="/admin/talkshows"
-            className="rounded-2xl bg-red-800/90 px-4 py-3 transition hover:bg-red-700"
-          >
-            Manage Talkshow
+            Manage Speakers
           </Link>
           <Link
             to="/"
@@ -58,11 +54,12 @@ export default function AdminLayout() {
           </Link>
         </nav>
 
+        {/* Tombol Logout yang menggunakan fungsi Zustand */}
         <button
           type="button"
           onClick={() => {
-            logoutAdmin();
-            navigate("/login");
+            logout(); // Menghapus status login di Zustand & LocalStorage
+            navigate("/login"); // Mengarahkan kembali ke halaman login
           }}
           className="mt-6 rounded-2xl bg-white px-4 py-3 text-red-900 font-semibold transition hover:bg-red-100"
         >
@@ -83,6 +80,7 @@ export default function AdminLayout() {
           </div>
         </header>
 
+        {/* Tempat merender halaman utama dashboard / konten admin */}
         <Outlet />
       </main>
     </div>

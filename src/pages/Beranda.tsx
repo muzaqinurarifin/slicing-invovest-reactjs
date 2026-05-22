@@ -1,8 +1,16 @@
+import { SponsorSlider } from "../components/ui/SponsorSlider";
 import Button from "../components/ui/Button";
 import { Card } from "../components/ui/Card";
 import { Collapse } from "../components/ui/Collapse";
 
 export default function Beranda() {
+  const sponsors = [
+    "https://www.invofest-harkatnegeri.com/assets/sponsor/domainesia.png",
+    "https://www.invofest-harkatnegeri.com/assets/sponsor/big_berry.png",
+    "https://www.invofest-harkatnegeri.com/assets/sponsor/bahari_inn.jpg",
+    "https://www.invofest-harkatnegeri.com/assets/sponsor/dicoding_official.png",
+    
+  ];
   const collapseItems = [
     {
       title: "Apa itu INVOFEST?",
@@ -264,7 +272,6 @@ export default function Beranda() {
           </p>
         </div>
 
-        {/* grid 2 kolom untuk menampilkan FAQ 2x3 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {collapseItems.map((faq, index) => (
             <Collapse
@@ -273,6 +280,15 @@ export default function Beranda() {
               description={faq.description}
             />
           ))}
+        </div>
+      </section>
+
+      <section>
+        <div>
+          <h2 className="text-red-900 text-2xl font-bold text-center mb-8">
+            Sponsor INVOFEST 2025
+          </h2>
+          <SponsorSlider sponsors={sponsors} />
         </div>
       </section>
     </div>

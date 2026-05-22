@@ -3,7 +3,9 @@ import React from "react";
 interface BaseInputProps {
   label: string;
   name: string;
-  register: any;
+  value?: string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  register?: any;
   error?: string;
   type?: string;
   placeholder?: string;
@@ -12,6 +14,8 @@ interface BaseInputProps {
 export const Input: React.FC<BaseInputProps> = ({
   label,
   name,
+  value,
+  onChange,
   register,
   error,
   type = "text",
@@ -22,8 +26,11 @@ export const Input: React.FC<BaseInputProps> = ({
       <label className="font-medium text-gray-700 text-sm">{label}</label>
       <input
         type={type}
+        name={name}
+        value={value}
+        onChange={onChange}
         placeholder={placeholder}
-        {...register(name)}
+        {...(register ? register(name) : {})}
         className={`border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-primary transition-all ${
           error ? "border-red-500 bg-red-50" : "border-gray-300"
         }`}

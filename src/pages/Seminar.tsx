@@ -23,7 +23,6 @@ export default function Seminar() {
   const eventDetails = [
     {
       id: 1,
-      // 2. Langsung panggil komponen ikonnya dengan ukuran w-7 h-7
       icon: <CalendarDays className="w-7 h-7" />,
       text: "Kamis, 27 November 2025",
     },
@@ -168,15 +167,11 @@ export default function Seminar() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto p-4 font-sans">
           {eventDetails.map((item) => (
-            // Kita gunakan class tambahan `flex items-center gap-6` agar ikon dan teks ke samping
             <Card key={item.id} className="flex items-center gap-6">
-              {/* Kotak Ikon Merah Marun */}
-              {/* shrink-0 memastikan kotak ikon tidak mengecil saat teksnya panjang */}
               <div className="w-16 h-16 rounded-xl bg-[#852e4e] flex items-center justify-center text-white shrink-0">
                 {item.icon}
               </div>
 
-              {/* Teks Deskripsi */}
               <p className="text-[#455A64] text-lg">{item.text}</p>
             </Card>
           ))}
@@ -196,7 +191,6 @@ export default function Seminar() {
           </p>
         </div>
 
-        {/* grid 2 kolom untuk menampilkan FAQ 2x3 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {collapseItems.map((faq, index) => (
             <Collapse

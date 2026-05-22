@@ -7,35 +7,34 @@ import SpeakerCard from "../components/ui/SpeakerCard";
 export default function Talkshow() {
   const speakers = [
     {
-      name: "Dery Agung Triyadi",
-      role: "Aws Indonesia",
+      name: "Moh. Ichsan Maulana",
+      role: "Human Capital Information System (HCIS), PT. Garuda Daya Pratama Sejahtera",
       imageUrl:
-        "https://www.invofest-harkatnegeri.com/assets/seminar/Seminar%20Dery.png",
+        "https://www.invofest-harkatnegeri.com/assets/talkshow/talkshow%20ichsan.png",
     },
     {
-      name: "Sowam Habibi",
-      role: "Google Indonesia",
+      name: "M. Zaim Zamzami",
+      role: "Programmer, PT. Pertamina Drilling Service Indonesia",
       imageUrl:
-        "https://www.invofest-harkatnegeri.com/assets/seminar/seminar%20sowam.png",
+        "https://www.invofest-harkatnegeri.com/assets/talkshow/talkshow%20zaim%20zamzami.png",
     },
     {
-      name: "Dery Agung Triyadi",
-      role: "Aws Indonesia",
+      name: "Daffa Zuhdan Muhtar",
+      role: "Android Developer, PT. Astra Internasional",
       imageUrl:
-        "https://www.invofest-harkatnegeri.com/assets/seminar/Seminar%20Dery.png",
+        "https://www.invofest-harkatnegeri.com/assets/talkshow/talkshow%20daffa.png",
     },
     {
-      name: "Sowam Habibi",
-      role: "Google Indonesia",
+      name: "Bayu Adi Prasetiyo",
+      role: "Software Engineer, KOMPAS.ID",
       imageUrl:
-        "https://www.invofest-harkatnegeri.com/assets/seminar/seminar%20sowam.png",
+        "https://www.invofest-harkatnegeri.com/assets/talkshow/talkshow%20bayu.png",
     },
   ];
 
   const eventDetails = [
     {
       id: 1,
-      // 2. Langsung panggil komponen ikonnya dengan ukuran w-7 h-7
       icon: <CalendarDays className="w-7 h-7" />,
       text: "Kamis, 27 November 2025",
     },
@@ -115,7 +114,7 @@ export default function Talkshow() {
         </div>
         <div className="w-full lg:w-1/3 flex justify-center lg:justify-end pt-6 lg:pt-0">
           <img
-            src="https://www.invofest-harkatnegeri.com/assets/Maskot-Seminar.png"
+            src="https://www.invofest-harkatnegeri.com/assets/Maskot-Talkshow.png"
             alt=""
             className="max-w-full"
           />
@@ -181,15 +180,11 @@ export default function Talkshow() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto p-4 font-sans">
           {eventDetails.map((item) => (
-            // Kita gunakan class tambahan `flex items-center gap-6` agar ikon dan teks ke samping
             <Card key={item.id} className="flex items-center gap-6">
-              {/* Kotak Ikon Merah Marun */}
-              {/* shrink-0 memastikan kotak ikon tidak mengecil saat teksnya panjang */}
               <div className="w-16 h-16 rounded-xl bg-[#852e4e] flex items-center justify-center text-white shrink-0">
                 {item.icon}
               </div>
 
-              {/* Teks Deskripsi */}
               <p className="text-[#455A64] text-lg">{item.text}</p>
             </Card>
           ))}
@@ -209,7 +204,6 @@ export default function Talkshow() {
           </p>
         </div>
 
-        {/* grid 2 kolom untuk menampilkan FAQ 2x3 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {collapseItems.map((faq, index) => (
             <Collapse

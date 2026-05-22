@@ -41,7 +41,6 @@ export default function Workshop() {
     {
       id: 1,
       title: "Mobile Development",
-      // Ikon besar di kiri (Aku pakai Code sesuai gambarmu)
       mainIcon: <Code className="w-10 h-10" />,
       date: "Selasa, 25 November 2025",
       time: "08.00 WIB - 16.30 WIB",
@@ -50,7 +49,6 @@ export default function Workshop() {
     {
       id: 2,
       title: "Artificial Intelligence",
-      // Ikon besar di kiri (Aku pakai Smartphone sesuai gambarmu)
       mainIcon: <Smartphone className="w-10 h-10" />,
       date: "Selasa, 25 November 2025",
       time: "08.00 WIB - 16.30 WIB",
@@ -59,8 +57,6 @@ export default function Workshop() {
     {
       id: 3,
       title: "Cyber Security",
-      // Di gambarmu ikonnya menyerupai TensorFlow (biasanya untuk AI),
-      // jadi aku ganti pakai ikon Perisai (Shield) agar lebih cocok dengan Cyber Security!
       mainIcon: <ShieldCheck className="w-10 h-10" />,
       date: "Rabu, 26 November 2025",
       time: "08.00 WIB - 16.30 WIB",
@@ -102,7 +98,8 @@ export default function Workshop() {
 
   return (
     <div>
-      <section id="hero"
+      <section
+        id="hero"
         className="py-24 px-4 sm:px-6 lg:px-10 flex flex-col lg:flex-row gap-14 lg:gap-24 items-start"
       >
         <div className="w-full lg:w-2/3 flex flex-col gap-8">
@@ -125,14 +122,15 @@ export default function Workshop() {
         </div>
         <div className="w-full lg:w-1/3 flex justify-center lg:justify-end pt-6 lg:pt-0">
           <img
-            src="https://www.invofest-harkatnegeri.com/assets/Maskot-Seminar.png"
+            src="https://www.invofest-harkatnegeri.com/assets/Maskot-Workshop.png"
             alt=""
             className="max-w-full"
           />
         </div>
       </section>
 
-      <section id="deskripsi"
+      <section
+        id="deskripsi"
         className="py-20 bg-[#fee3ec] px-4 sm:px-6 lg:px-10 rounded-lg"
       >
         <div className="flex flex-col items-center justify-center mt-6 gap-8">
@@ -178,47 +176,35 @@ export default function Workshop() {
       </section>
 
       <section id="detail-jadwal" className="py-16 bg-[#FAE6EB] font-sans">
-        {/* Judul Section */}
         <h2 className="text-4xl font-bold text-center text-[#852e4e] mb-12">
           Pelaksanaan IT Workshop
         </h2>
 
-        {/* Wadah Flexbox: 
-        justify-center & flex-wrap adalah kunci agar jika ada 3 kartu, 
-        kartu terakhir akan otomatis turun dan pindah ke tengah!
-      */}
         <div className="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto px-4">
           {workshops.map((ws) => (
             <Card
               key={ws.id}
-              // w-full di HP, w-[48%] di laptop (membagi 2 ruang tapi tidak terlalu mepet)
               className="flex items-center gap-6 w-full md:w-[48%] max-w- p-6"
             >
-              {/* Kiri: Kotak Ikon Merah Marun Besar */}
               <div className="w-24 h-24 rounded-2xl bg-[#852e4e] flex items-center justify-center text-white shrink-0 shadow-inner">
                 {ws.mainIcon}
               </div>
 
-              {/* Kanan: Detail Teks & Ikon Kecil */}
               <div className="flex flex-col gap-1.5">
-                {/* Judul Workshop */}
                 <h3 className="text-xl font-bold text-[#37474F] mb-1">
                   {ws.title}
                 </h3>
 
-                {/* Baris Tanggal */}
                 <div className="flex items-center gap-3 text-slate-500 text-sm">
                   <CalendarDays className="w-4 h-4 text-slate-400" />
                   <span>{ws.date}</span>
                 </div>
 
-                {/* Baris Waktu */}
                 <div className="flex items-center gap-3 text-slate-500 text-sm">
                   <Clock className="w-4 h-4 text-slate-400" />
                   <span>{ws.time}</span>
                 </div>
 
-                {/* Baris Lokasi */}
                 <div className="flex items-center gap-3 text-slate-500 text-sm">
                   <MapPin className="w-4 h-4 text-slate-400" />
                   <span>{ws.location}</span>
@@ -242,7 +228,6 @@ export default function Workshop() {
           </p>
         </div>
 
-        {/* grid 2 kolom untuk menampilkan FAQ 2x3 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {collapseItems.map((faq, index) => (
             <Collapse

@@ -7,19 +7,18 @@ import Talkshow from "./pages/Talkshow";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import AdminDashboard from "./pages/AdminDashboard";
-import ManageCompetitions from "./pages/admin/ManageCompetitions";
-import ManageSeminar from "./pages/admin/ManageSeminar";
-import ManageWorkshop from "./pages/admin/ManageWorkshop";
-import ManageTalkshow from "./pages/admin/ManageTalkshow";
+import ManageEvents from "./pages/admin/ManageEvents";
+import ManageCategories from "./pages/admin/ManageCategories";
+import ManageSpeakers from "./pages/admin/ManageSpeakers";
 import MainLayout from "./layouts/MainLayout";
 import AuthLayout from "./layouts/AuthLayout";
 import AdminLayout from "./layouts/AdminLayout";
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* landing page */}
         <Route element={<MainLayout />}>
           <Route path="/" element={<Beranda />} />
           <Route path="/competition" element={<Competition />} />
@@ -28,19 +27,17 @@ function App() {
           <Route path="/talkshow" element={<Talkshow />} />
         </Route>
 
-        {/* auth page */}
         <Route element={<AuthLayout />}>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Route>
-
-        {/* admin page */}
-        <Route path="/admin" element={<AdminLayout />}>
-          <Route index element={<AdminDashboard />} />
-          <Route path="competitions" element={<ManageCompetitions />} />
-          <Route path="seminars" element={<ManageSeminar />} />
-          <Route path="workshops" element={<ManageWorkshop />} />
-          <Route path="talkshows" element={<ManageTalkshow />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<AdminDashboard />} />
+            <Route path="events" element={<ManageEvents />} />
+            <Route path="categories" element={<ManageCategories />} />
+            <Route path="speakers" element={<ManageSpeakers />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

@@ -4,22 +4,22 @@ import { CompetitionCard } from "../components/ui/CompetitionCard";
 
 const competitionData = [
   {
-    title: "National Poster Design Competition",
+    title: "Poster Design Competition",
     category: "Design",
     date: "24 Mei 2026",
     location: "Online",
     description:
-      "Kompetisi desain poster yang menantang peserta untuk menyampaikan pesan inovasi melalui visual kreatif.",
+      "Poster Design Competition ini adalah kompetisi untuk menciptakan suatu karya dalam bentuk poster digital yang komunikatif dan inspiratif, guna menyuarakan gagasan atau solusi visual terhadap permasalahan yang ada sekarang ini.",
     imageUrl:
       "https://www.invofest-harkatnegeri.com/assets/competition-card/software_dev.png",
   },
   {
-    title: "UI/UX Design Competition",
-    category: "Product",
+    title: "Web Design Competition",
+    category: "Design",
     date: "28 Mei 2026",
     location: "Hybrid",
     description:
-      "Persaingan desain antarmuka pengguna untuk pengalaman digital yang lebih menarik dan mudah digunakan.",
+      "UI/UX Design Competition ini adalah kompetisi untuk menciptakan dan merancang inovasi sebuah produk digital yang dapat berupa website maupun mobile apps serta dapat membuat nyaman calon pengguna.",
     imageUrl:
       "https://www.invofest-harkatnegeri.com/assets/competition-card/ui_ux.png",
   },
@@ -29,7 +29,7 @@ const competitionData = [
     date: "2 Juni 2026",
     location: "Offline",
     description:
-      "Tantangan membuat aplikasi web kreatif dengan fitur fungsional dan desain modern.",
+      "Web Design Competition ini adalah kompetisi untuk menciptakan suatu perangkat lunak berbasis website yang menggunakan desain menarik, unik, dan responsive pada semua device serta sesuai dengan tema kompetisi.",
     imageUrl:
       "https://www.invofest-harkatnegeri.com/assets/competition-card/web_design.png",
   },
@@ -163,7 +163,6 @@ export default function Competition() {
           </p>
         </div>
 
-        {/* grid 2 kolom untuk menampilkan FAQ 2x3 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {collapseItems.map((faq, index) => (
             <Collapse
