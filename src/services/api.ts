@@ -146,3 +146,86 @@ export const speakersAPI = {
     return response.json();
   },
 };
+
+export const authAPI = {
+  register: async (data: {
+    name: string;
+    email: string;
+    password: string;
+    passwordConfirm: string;
+  }) => {
+    const response = await fetch(`${API_BASE_URL}/auth/register`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: data.name,
+        email: data.email,
+        password: data.password,
+        password_confirm: data.passwordConfirm,
+      }),
+    });
+    const body = await response.json().catch(() => null);
+    if (!response.ok) {
+      throw new Error(body?.message || "Failed to register");
+    }
+    return body;
+  },
+
+  login: async (data: { email: string; password: string }) => {
+    const response = await fetch(`${API_BASE_URL}/auth/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    const body = await response.json().catch(() => null);
+    if (!response.ok) {
+      throw new Error(body?.message || "Failed to login");
+    }
+    return body;
+  },
+};
+
+export const usersAPI = {
+  getAll: async () => {
+    const response = await fetch(`${API_BASE_URL}/users`);
+    if (!response.ok) throw new Error("Failed to fetch users");
+    return response.json();
+  },
+
+  create: async (data: { name: string; email: string; password: string }) => {
+    const response = await fetch(`${API_BASE_URL}/users`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    const body = await response.json().catch(() => null);
+    if (!response.ok) {
+      throw new Error(body?.message || "Failed to create user");
+    }
+    return body;
+  },
+
+  update: async (
+    id: number,
+    data: { name?: string; email?: string; password?: string },
+  ) => {
+    const response = await fetch(`${API_BASE_URL}/users/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    const body = await response.json().catch(() => null);
+    if (!response.ok) {
+      throw new Error(body?.message || "Failed to update user");
+    }
+    return body;
+  },
+
+  delete: async (id: number) => {
+    const response = await fetch(`${API_BASE_URL}/users/${id}`, {
+      method: "DELETE",
+    });
+    if (!response.ok) throw new Error("Failed to delete user");
+    return response.json();
+  },
+};

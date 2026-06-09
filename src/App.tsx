@@ -10,6 +10,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import ManageEvents from "./pages/admin/ManageEvents";
 import ManageCategories from "./pages/admin/ManageCategories";
 import ManageSpeakers from "./pages/admin/ManageSpeakers";
+import ManageUser from "./pages/admin/ManageUser";
 import MainLayout from "./layouts/MainLayout";
 import AuthLayout from "./layouts/AuthLayout";
 import AdminLayout from "./layouts/AdminLayout";
@@ -37,6 +38,7 @@ function App() {
             <Route path="events" element={<ManageEvents />} />
             <Route path="categories" element={<ManageCategories />} />
             <Route path="speakers" element={<ManageSpeakers />} />
+            <Route path="users" element={<ManageUser />} />
           </Route>
         </Route>
       </Routes>

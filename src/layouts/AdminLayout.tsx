@@ -1,4 +1,3 @@
-// File: src/layouts/AdminLayout.tsx
 import { Link, Outlet, useNavigate } from "react-router-dom";
 // Import Zustand store untuk mengambil fungsi logout
 import { useAuthStore } from "../store/useAuthStore";
@@ -7,6 +6,7 @@ export default function AdminLayout() {
   const navigate = useNavigate();
   // Mengambil fungsi logout dari Zustand
   const logout = useAuthStore((state) => state.logout);
+  const userName = useAuthStore((state) => state.userName);
 
   return (
     <div className="min-h-screen flex bg-[#fff1f5] text-slate-900">
@@ -47,6 +47,12 @@ export default function AdminLayout() {
             Manage Speakers
           </Link>
           <Link
+            to="/admin/users"
+            className="rounded-2xl bg-red-800/90 px-4 py-3 transition hover:bg-red-700"
+          >
+            Manage Users
+          </Link>
+          <Link
             to="/"
             className="rounded-2xl bg-red-800/90 px-4 py-3 transition hover:bg-red-700"
           >
@@ -72,7 +78,7 @@ export default function AdminLayout() {
           <div>
             <p className="text-sm text-slate-500">Admin Dashboard</p>
             <h2 className="text-3xl font-bold text-slate-900">
-              Selamat datang, Muzaqi
+              Selamat datang, {userName ?? "Administrator"}
             </h2>
           </div>
           <div className="rounded-3xl bg-white px-5 py-3 shadow-sm text-sm font-medium text-slate-700">
