@@ -36,6 +36,7 @@ export const Header: React.FC = () => {
           {menuItems.map((item) => (
             <NavLink
               to={item.href}
+              key={item.href}
               className={({ isActive }) =>
                 `flex items-center gap-2 px-4 py-2 font-medium transition-all duration-200 ${
                   isActive ? activeStyle : defaultStyle //untuk mengganti warna aktif dan default tinggal ganti saja sesuai keinginan, bisa juga ditambahin efek lain seperti bg atau border tinggal tambahin di sini saja

@@ -130,21 +130,6 @@ export default function AdminDashboard() {
           </Link>
         </div>
       </section>
-
-      {/* Info Section */}
-      <section className="rounded-3xl bg-linear-to-r from-red-500 to-red-700 p-8 text-white shadow-lg">
-        <div className="max-w-2xl">
-          <h2 className="text-3xl font-bold">Selamat Datang di Admin Panel</h2>
-          <p className="mt-3 text-lg text-red-100">
-            Gunakan panel ini untuk mengelola seluruh event Invofest. Data yang
-            Anda input akan terhubung langsung dengan backend.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Button label="Panduan" variant="primary" />
-            <Button label="Bantuan" variant="outline" />
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

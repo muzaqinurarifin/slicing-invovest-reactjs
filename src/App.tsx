@@ -1,4 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
 import Beranda from "./pages/Beranda";
 import Competition from "./pages/Competition";
 import Seminar from "./pages/Seminar";
@@ -16,33 +18,37 @@ import AuthLayout from "./layouts/AuthLayout";
 import AdminLayout from "./layouts/AdminLayout";
 import ProtectedRoute from "./routes/ProtectedRoute";
 
+const queryClient = new QueryClient();
+
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<MainLayout />}>
-          <Route path="/" element={<Beranda />} />
-          <Route path="/competition" element={<Competition />} />
-          <Route path="/seminar" element={<Seminar />} />
-          <Route path="/workshop" element={<Workshop />} />
-          <Route path="/talkshow" element={<Talkshow />} />
-        </Route>
-
-        <Route element={<AuthLayout />}>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-        </Route>
-        <Route element={<ProtectedRoute />}>
-          <Route path="/admin" element={<AdminLayout />}>
-            <Route index element={<AdminDashboard />} />
-            <Route path="events" element={<ManageEvents />} />
-            <Route path="categories" element={<ManageCategories />} />
-            <Route path="speakers" element={<ManageSpeakers />} />
-            <Route path="users" element={<ManageUser />} />
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<MainLayout />}>
+            <Route path="/" element={<Beranda />} />
+            <Route path="/competition" element={<Competition />} />
+            <Route path="/seminar" element={<Seminar />} />
+            <Route path="/workshop" element={<Workshop />} />
+            <Route path="/talkshow" element={<Talkshow />} />
           </Route>
-        </Route>
-      </Routes>
-    </BrowserRouter>
+
+          <Route element={<AuthLayout />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Route>
+          <Route element={<ProtectedRoute />}>
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route index element={<AdminDashboard />} />
+              <Route path="events" element={<ManageEvents />} />
+              <Route path="categories" element={<ManageCategories />} />
+              <Route path="speakers" element={<ManageSpeakers />} />
+              <Route path="users" element={<ManageUser />} />
+            </Route>
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 export default App;

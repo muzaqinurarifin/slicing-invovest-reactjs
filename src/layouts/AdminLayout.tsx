@@ -6,7 +6,7 @@ export default function AdminLayout() {
   const navigate = useNavigate();
   // Mengambil fungsi logout dari Zustand
   const logout = useAuthStore((state) => state.logout);
-  const userName = useAuthStore((state) => state.userName);
+  const userName = useAuthStore((state) => state.user?.name);
 
   return (
     <div className="min-h-screen flex bg-[#fff1f5] text-slate-900">
